@@ -5,5 +5,3 @@ venv/
 uploads/
 outputs/
 logs/
-.DS_Store
-*.log

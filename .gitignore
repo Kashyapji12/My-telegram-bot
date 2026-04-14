@@ -1,28 +1,9 @@
-# Environment
 .env
-.env.local
-
-# Python
 __pycache__/
 *.pyc
-*.pyo
 venv/
-env/
-
-# Project
 uploads/
 outputs/
 logs/
-
-# System
 .DS_Store
 *.log
-
-# IDE
-.vscode/
-.idea/
-*.swp
-
-# Temporary
-*.tmp
-.cache/

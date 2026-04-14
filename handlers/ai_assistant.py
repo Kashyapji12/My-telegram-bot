@@ -86,4 +86,17 @@ Analyze this code and provide (SIGMA STYLE):
 4. 3 improvements (motivational way)
 5. One sigma rule related to this code
 
-Code:
+Code: 
+Be witty, honest, and motivational!"""
+        
+        response = model.generate_content(prompt)
+        analysis = response.text
+        
+        roast = get_sigma_roast()
+        emojis = get_sigma_emojis(4)
+        
+        return f"{roast}\n\n<b>📊 Sigma Code Review:</b>\n\n{analysis}\n\n{emojis}"
+    
+    except Exception as e:
+        logger.error(f"File analysis error: {e}")
+        return f"💀 Analysis failed bhai: {str(e)}\n\n{get_sigma_emojis(2)}"

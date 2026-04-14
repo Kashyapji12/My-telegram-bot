@@ -1,6 +1,6 @@
 import logging
+import asyncio
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
 from handlers import start, code_execution, file_handler, ai_assistant
 import config
 
@@ -27,5 +27,14 @@ async def on_startup(dispatcher):
 async def on_shutdown(dispatcher):
     logger.info("❌ CodeFlow Bot Stopped!")
 
+async def main():
+    try:
+        await on_startup(dp)
+        await dp.start_polling(bot)
+    finally:
+        await dp.storage.close()
+        await dp.storage.wait_closed()
+        await bot.session.close()
+
 if __name__ == '__main__':
-    executor.start_polling(dp, on_startup=on_startup, on_shutdown=on_shutdown)
+    asyncio.run(main())

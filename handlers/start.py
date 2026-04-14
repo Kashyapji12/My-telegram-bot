@@ -1,63 +1,52 @@
 from aiogram import types
-from utils.sigma_roaster import sigma_message, get_sigma_emojis
+import random
 import config
 
+def get_emojis(count=3):
+    return "".join(random.sample(config.SIGMA_EMOJIS, min(count, len(config.SIGMA_EMOJIS))))
+
 async def cmd_start(message: types.Message):
-    """Start command - Sigma Welcome"""
-    welcome_text = f"""
-{get_sigma_emojis(3)} <b>Welcome to CodeFlow - Sigma Edition!</b> {get_sigma_emojis(3)}
+    """Start command"""
+    welcome = f"""
+{get_emojis(3)} <b>Welcome to CodeFlow - SIGMA Edition!</b> {get_emojis(3)}
 
-Your AI-powered coding companion jo roast bhi karega!
+Your AI-powered Telegram bot! 
 
-<b>🕶️ Sigma Features:</b>
-• <code>/ask</code> - AI se puchho, sigma roasting bhi paao 🔥
-��� <code>/run</code> - Code execute kar, result dekh 💀
-• Upload files/ZIP for savage analysis 📦
+<b>Commands:</b>
+/ask - Ask AI questions
+/run - Execute code
+/help - Full guide
+/sigma_on - Max roasting 🔥
+/sigma_off - Normal mode
 
-<b>😈 Special Powers:</b>
-✅ AI coding help (Gemini - Sigma Mode)
-✅ Code execution with brutal feedback
-✅ File & ZIP analysis (koi kharabi nahi hogi)
-✅ Premium emojis everywhere 💯
-✅ Roasting on every response 🚬
+<b>Features:</b>
+✅ AI coding help
+✅ Code execution
+✅ File analysis
+✅ Sigma roasting 💀
 
-<b>⚡ Commands:</b>
-1. `/ask` - Coding question pucho
-2. `/run` - Code chalao
-3. `/sigma_on` - Roasting mode ON (default 😈)
-4. `/sigma_off` - Normal mode (boring!)
-5. `/help` - Full guide
-
-<b>💡 Pro Tips:</b>
-→ Ghalat code upload mat kar, roasting heavy padegi! 💀
-→ Comments likha kar, warna refactor timeline extend hoga 📝
-→ Variables ka naam samझao, random alphabet nahi! 🧠
-
-<b>🎮 Examples:</b>
-/ask "How to optimize Python code?"
-/ask "Debug this - (paste code)"
-
-Upload: your_code.py (instant analysis + roasting)
-
-<b>Ready for sigma grindset?</b> Type /help
+Type /help for more!
 """
-    await message.reply(welcome_text)
+    await message.reply(welcome)
 
 async def cmd_help(message: types.Message):
-    """Help command - Sigma Guide"""
+    """Help command"""
     help_text = f"""
-{get_sigma_emojis(4)} <b>CodeFlow - SIGMA Mode Guide</b> {get_sigma_emojis(4)}
+{get_emojis(3)} <b>CodeFlow - SIGMA Guide</b>
 
-<b>🎯 Main Commands:</b>
+<b>Main Commands:</b>
+/start - Welcome
+/ask <question> - Ask AI
+/run - Execute code
+/help - This guide
+/sigma_on - Roasting ON 🔥
+/sigma_off - Normal mode
 
-<code>/start</code> - Welcome bhai
-<code>/help</code> - This sigma guide
-<code>/ask &lt;question&gt;</code> - AI help with roasting
-<code>/run</code> - Code execution guide
-<code>/sigma_on</code> - Roasting mode ON 🔥
-<code>/sigma_off</code> - Normal mode (weak!)
+<b>Upload Files:</b>
+Send .py, .js, .java files
+Bot analyzes + roasts! 💀
 
-<b>💀 Code Snippets:</b>
-Send code in backticks (with roasting included):
+<b>Code Execution:</b>
+Send code in backticks:
 ```python
-print("Hello Sigma!")
+print("Hello!")
